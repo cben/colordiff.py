@@ -53,8 +53,8 @@ CANCEL = '\033[0m'
 class ColorDiff:
     DEL = dict(text=brightFG(RED), trailingSpace=darkBG(RED))
     DEL_UNCHANGED = dict(text=darkFG(RED), trailingSpace=darkBG(RED))
-    INS = dict(text=brightFG(BLUE), trailingSpace=darkBG(BLUE))
-    INS_UNCHANGED = dict(text=darkFG(BLUE), trailingSpace=darkBG(BLUE))
+    INS = dict(text=brightFG(GREEN), trailingSpace=darkBG(GREEN))
+    INS_UNCHANGED = dict(text=darkFG(GREEN), trailingSpace=darkBG(GREEN))
     HUNK = darkFG(CYAN)
     HEADER = BOLD
 
