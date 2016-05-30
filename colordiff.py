@@ -50,7 +50,7 @@ CANCEL = '\033[0m'
 
 class ColorDiff:
     DEL, DEL_UNCHANGED = brightFG(RED), darkFG(RED)
-    INS, INS_UNCHANGED = brightFG(BLUE), darkFG(BLUE)
+    INS, INS_UNCHANGED = brightFG(GREEN), darkFG(GREEN)
 
     def __init__(self):
         self.clear()
