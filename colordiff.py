@@ -46,6 +46,8 @@ def brightBG(ansi_number):
 def darkBG(ansi_number):
     return '\033[0;4%dm' % ansi_number
 
+BOLD = '\033[1m'
+UNDERLINE = '\033[4m'
 CANCEL = '\033[0m'
 
 class ColorDiff:
@@ -53,6 +55,8 @@ class ColorDiff:
     DEL_UNCHANGED = dict(text=darkFG(RED), trailingSpace=darkBG(RED))
     INS = dict(text=brightFG(BLUE), trailingSpace=darkBG(BLUE))
     INS_UNCHANGED = dict(text=darkFG(BLUE), trailingSpace=darkBG(BLUE))
+    HUNK = darkFG(CYAN)
+    HEADER = BOLD
 
     def __init__(self):
         self.clear()
@@ -121,7 +125,12 @@ class ColorDiff:
                     self.outputPlus(self.tokenize(line))
             else:
                 self.flushAll()
-                sys.stdout.write(line)
+                if line.startswith('@@'):
+                    sys.stdout.write(self.HUNK + line + CANCEL)
+                elif line.startswith(' '):
+                    sys.stdout.write(line)
+                else:
+                    sys.stdout.write(self.HEADER + line + CANCEL)
         self.flushAll()
 
 ColorDiff().run()
